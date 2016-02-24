@@ -1,5 +1,28 @@
-Hello this a text file with URLS www.asdkfj234.com maybe there are passwords in it or other different
+Hello this a text file with URLS www.asdkfj234.com maybe there are passwords in it or other different asdf.com
+http://www.asdf.com
+http://asdff.com
+https://www.asdf.com
+https://asdf.com
 Information in the str123.123.123.123ing you should be able to parse pa155.155.155.155sswords urls and ip addresses such as
 www.citadel.edu password = pass1234 125.125.125.125.125 google.com/asdfasdf/asdf
 password = frightful
 www.alcoholisCool.org/asjldkf/1234
+
+# All of the following should be found by the parser
+password=12345
+password = 12345
+
+PASSWORD=12345
+PASSWORD = 12345
+PASSWORD= 12345
+pass = 12345
+
+pw = 12345
+pass = 12345
+secret = 12345
+PASS=12345
+pass=12345
+
+credential=12345
+aws.key=12345
+key=12345

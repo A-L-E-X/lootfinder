@@ -40,6 +40,9 @@ for i in range(0, len(address)):
 
 
 #Prints out all lines for which password is present in
+# Here we want to check multiple words and maybe even a text file of key
+# words in the text file (pass, pw, secret, PASSWORD, etc)
+# make not lowercase, etc
 print("\n---------------Printing all lines in which password is found---------------")
 TextSplit = Text.split('\n');
 for i in range(0, len(TextSplit)):
