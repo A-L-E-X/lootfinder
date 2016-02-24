@@ -1,3 +1,21 @@
+# To add files to be tracked/removed:
+# git add -A
+
+# To commit changes and stage them to be pushed
+# git commit -am "my commit message"
+
+# To push changes to github
+# git push origin master
+
+# To create a new branch
+# git checkout -b my_new_branch
+
+# To merge branch back in when done (after you have committed and pushed
+# change from branch):
+# git checkout master
+# git puhs
+
+# Test Branch
 import re
 import string
 
@@ -39,10 +57,14 @@ for i in range(0, len(address)):
 
 
 
-#Prints out all lines for which password is present in
+# Prints out all lines for which password is present in
 # Here we want to check multiple words and maybe even a text file of key
 # words in the text file (pass, pw, secret, PASSWORD, etc)
 # make not lowercase, etc
+
+# Change this to look for a list of keywords?
+# We also want to find things like "rsa-dss" and "key" and "aws.credential"
+# Make a regex that finds all instances of "credential", "key", etc
 print("\n---------------Printing all lines in which password is found---------------")
 TextSplit = Text.split('\n');
 for i in range(0, len(TextSplit)):
@@ -50,3 +72,7 @@ for i in range(0, len(TextSplit)):
               print(TextSplit[i])
 
 
+#Looping through the text file and using each regex found in the regExFile
+for regEx in regexArr:
+       print(re.findall(regEx, Text)
+       
