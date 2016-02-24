@@ -2,7 +2,7 @@ import re
 import string
 
 
-__author__ = 'Newton McCollum'
+__author__ = 'Newton McCollum & Ike Clinton'
 
 
 #Opening the file for which expressions will be compared against
