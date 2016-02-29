@@ -18,20 +18,57 @@
 # Test Branch
 import re
 import string
+import sys
+import getopt
+
+
+def main(argv):
+   keyfile = 'Keyword.txt'
+   textfile = 'TextFile.txt'
+   refile = 'RegExFile.txt'
+   try:
+      opts, args = getopt.getopt(argv,"hk:t:r:",["kfile=","tfile=", "rfile"])
+   except getopt.GetoptError:
+      print('Parser.py -t <inputfile> -k <keywordfile> -r <regexfile>')
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-h':
+         print('Parser.py -t <inputfile> -k <keywordfile> -r <regexfile>')
+         print('Default: Parser.py -t TextFile.txt -k Keyword.txt -r RegExFile.txt')
+         sys.exit()
+      elif opt in ("-k", "--kfile"):
+         keyfile = arg
+      elif opt in ("-t", "--tfile"):
+         textfile = arg
+      elif opt in ("-r", "--rfile"):
+          refile = arg
+
+   print("TEXTFILE: ", textfile)
+   print("KEYFILE: ", keyfile)
+   print("REGEXFILE: ", refile)
+
+   return [textfile, keyfile, refile]
+
 
 __author__ = 'Newton McCollum & Ike Clinton'
+
+#Command line functionality
+fileArr = main(sys.argv[1:])
+
 
 
 
 
 # Opening the file for which expressions will be compared against
-text = open("TextFile.txt").read()
-
-# Opening the file which contains other RegEx expressions
-regexArr = open("RegExFile.txt").read().split("\n")
+text = open(fileArr[0]).read()
 
 # Opening the file which contains the keywords which will be searched
-keyWordArr = open("Keyword.txt").read().split('\n')
+keyWordArr = open(fileArr[1]).read().split('\n')
+
+# Opening the file which contains other RegEx expressions
+regexArr = open(fileArr[2]).read().split("\n")
+
+
 
 
 #regexIPv4 = "(?:[0-9]{1,3}\.){3}[0-9]{1,3}"
@@ -39,7 +76,7 @@ regexUrl = "[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}"
 regexUrlDir = "[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
 
 
-# Finds all the prevelant IPv4 Addresses and prints thme out
+#Finds all the prevelant IPv4 Addresses and prints thme out
 #print("\n---------------Printing all IPv4 Addresses---------------")
 #print(re.findall(regexIPv4, text))
 
