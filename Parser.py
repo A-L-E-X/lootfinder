@@ -34,7 +34,7 @@ def main(argv):
    textfile = ['TextFile.txt']
    refile = 'RegExFile.txt'
    try:
-      opts, args = getopt.getopt(argv,"hk:t:r:d",["kfile=","tfile=", "rfile", "dfile"])
+      opts, args = getopt.getopt(argv,"hk:t:r:d:",["kfile=", "tfile=", "rfile=", "dfile="])
    except getopt.GetoptError:
       print('Parser.py -t <inputfile> -k <keywordfile> -r <regexfile>')
       sys.exit(2)
@@ -45,22 +45,25 @@ def main(argv):
                '-t <inputfile>\n'
                '-k <keywordfile>\n'
                '-r <regexfile>\n'
-               '-d <search dir\n')
+               '-d <search dir>\n')
          sys.exit()
       elif opt in ("-k", "--kfile"):
+         print(arg)
          keyfile = arg
       elif opt in ("-t", "--tfile"):
+         print(arg)
          textfile = [arg]
       elif opt in ("-r", "--rfile"):
+          print(arg)
           refile = arg
       #Work In Progress Searching through directory
-      '''elif opt in("-d", "--dfile"):
+      elif opt in("-d", "--dfile"):
           textfile = []
+          #print(arg)
           for name in os.listdir(arg):
-              print(name)
               if os.path.isfile(os.path.join(arg,name)):
                   textfile.append(name)
-      '''
+
    print("TEXTFILE: ", textfile)
    print("KEYFILE: ", keyfile)
    print("REGEXFILE: ", refile)
@@ -111,13 +114,8 @@ def searchFile(files , keyfileArr, refile):
 
 
 
-
-
 #Command line functionality
 fileArr = main(sys.argv[1:])
-
-# Opening the file for which expressions will be compared against
-#text = open(fileArr[0]).read()
 
 # Opening the file which contains the keywords which will be searched
 keyWordArr = open(fileArr[1]).read().split('\n')

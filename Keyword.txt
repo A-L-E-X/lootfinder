@@ -2,3 +2,4 @@ pw
 aws
 encryption
 password
+credential
